@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <title>AdminData</title>
+    <meta charset="UTF-8" name="author" content="LCS">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/styles.css' %}">
+</head>
+<body>
+    <p class="form-title">admin data</p><br>
+    <p>Period from {{initial}} to {{final}}</p><br>
+    <img src="{% static 'main/img/graph-admin-sales.jpg' %}" width="800">
+    <p class="form-title">Total sales: {{ sales }}</p><br>
+    <img src="{% static 'main/img/graph-admin-units-sold.jpg' %}" width="800">
+    <img src="{% static 'main/img/graph-admin-inventory.jpg' %}" width="800">
+    <p class="form-title">Products under minimum stock</p><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Placement</th>
+                <th>Minimum stock</th>
+                <th>Current stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for n,p,m,c in alerts%}
+                <tr>
+                    <td> {{n}}</td>
+                    <td> {{p}}</td>
+                    <td> {{m}}</td>
+                    <td> {{c}}</td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>
